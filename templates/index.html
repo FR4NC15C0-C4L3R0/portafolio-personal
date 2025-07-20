@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Francisco Calero - Portfolio{% endblock %}
+
+{% block content %}
+    <section class="intro-section">
+        <img src="{{ url_for('static', filename='img/foto_perfil.jpg') }}" alt="Francisco Calero" class="profile-pic"> {# ¡CLASE CAMBIADA AQUÍ! #}
+        <div class="intro-text">
+            <h2>¡Hola! Soy Francisco Calero.</h2>
+            <p>
+                Soy un entusiasta especializado en Big Data e Inteligencia Artificial, con experiencia práctica en el desarrollo de soluciones robustas y escalables. Me encanta transformar datos complejos en conocimientos accionables y construir sistemas inteligentes que resuelvan problemas reales.
+            </p>
+            <p>
+                En este portafolio, encontrarás una muestra de mis proyectos más destacados, donde muestro mis habilidades en Python, Apache Spark, aprendizaje automático, desarrollo de APIs (Flask/FastAPI) y despliegue con Docker. ¡Explora mi trabajo y no dudes en contactarme!
+            </p>
+        </div>
+    </section>
+
+{% endblock %}

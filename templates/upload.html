@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Subir Nuevo Proyecto{% endblock %}
+
+{% block content %}
+    <div class="upload-form-container">
+        <h2>Cargar un Nuevo Proyecto</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="project_name">Nombre del Proyecto:</label>
+                <input type="text" id="project_name" name="project_name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción del Proyecto:</label>
+                <textarea id="description" name="description" rows="8" placeholder="Una descripción detallada del proyecto, sus objetivos, tecnologías utilizadas y desafíos superados."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="demo_url">URL de la Demo en Vivo (opcional):</label>
+                <input type="text" id="demo_url" name="demo_url" placeholder="Ej: https://tu-demo.com">
+            </div>
+            <div class="form-group">
+                <label for="github_url">URL del Repositorio en GitHub (opcional):</label>
+                <input type="text" id="github_url" name="github_url" placeholder="Ej: https://github.com/tu_usuario/tu_repo">
+            </div>
+            <div class="form-group">
+                <label for="report_url">URL del Informe/PDF (opcional):</label>
+                <input type="text" id="report_url" name="report_url" placeholder="Ej: {{ url_for('static', filename='docs/mi_informe.pdf') }}">
+            </div>
+            <div class="form-group">
+                <label for="project_file">Archivo del Proyecto (ej. .ipynb, .py, .zip):</label>
+                <input type="file" id="project_file" name="project_file" required>
+            </div>
+            <div class="form-group">
+                <label for="project_image">Imagen del Proyecto (Miniatura - Opcional):</label>
+                <input type="file" class="form-control-file" id="project_image" name="project_image" accept="image/*">
+                <small class="form-text text-muted">Sube una imagen representativa para tu proyecto (JPG, PNG, GIF).</small>
+            </div>
+            <div class="form-group">
+                <button type="submit">Subir Proyecto</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

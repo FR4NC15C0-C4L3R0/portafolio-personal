@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Francisco_Calero - Portfolio{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block head_extra %}{% endblock %} {# Para añadir CSS o JS adicional por página #}
+</head><body>
+    <header>
+        <div class="header-content-wrapper"> {# Este contenedor controla la alineación del logo y la navegación #}
+            <div class="logo-container">
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='img/logo_web.gif') }}" alt="Logo Francisco Calero" class="header-logo-img"> {# ¡CLASE AÑADIDA AQUÍ! #}
+                </a>
+            </div>
+            <nav>
+                <a href="{{ url_for('index') }}">Inicio</a>
+                <a href="{{ url_for('list_projects') }}">Proyectos</a>
+                <a href="{{ url_for('show_cv') }}">Mi CV</a>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('upload_project') }}">Subir Proyecto</a>
+                    <a href="{{ url_for('logout') }}">Cerrar Sesión</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Iniciar Sesión (Admin)</a>
+                {% endif %}
+            </nav>
+        </div> {# Cierre del header-content-wrapper #}
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages-container">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %} {# Este bloque será rellenado por las plantillas hijas #}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Francisco Calero. Todos los derechos reservados.</p>
+    </footer>
+    {% block scripts %}{% endblock %} {# Para añadir scripts JS al final del body #}
+</body>
+</html>

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.name }} - Detalles del Proyecto{% endblock %}
+
+{% block head_extra %}
+    <style>
+        /* Estilos específicos para la página de detalles del proyecto */
+        .project-detail-container {
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin: 30px auto;
+            max-width: 900px;
+            line-height: 1.6;
+        }
+        .project-detail-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .project-detail-container p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .project-links {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .project-links a, .project-links button { /* Afecta tanto a enlaces como a botones */
+            display: inline-block;
+            background-color: #007bff; /* Color azul para enlaces generales */
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none; /* Quita el borde por defecto de los botones */
+            cursor: pointer; /* Indica que es clickeable */
+        }
+        .project-links a:hover, .project-links button:hover {
+            background-color: #0056b3;
+        }
+        .project-links a.demo-button {
+            background-color: #28a745; /* Verde para la demo */
+        }
+        .project-links a.demo-button:hover {
+            background-color: #218838;
+        }
+        .project-links a.download-button {
+            background-color: #ffc107; /* Amarillo/naranja para descarga */
+            color: #333; /* Texto oscuro para contraste */
+        }
+        .project-links a.download-button:hover {
+            background-color: #e0a800;
+        }
+        .project-links button.delete-button {
+            background-color: #dc3545; /* Color rojo para eliminar */
+        }
+        .project-links button.delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="project-detail-container">
+        {% if project %}
+            <h2>{{ project.name }}</h2>
+            <p>{{ project.description | safe }}</p>
+
+            <div class="project-links">
+                {% if project.demo_url %}
+                    <a href="{{ project.demo_url }}" target="_blank" class="demo-button">
+                        Ver Demo en Vivo <i class="fas fa-external-link-alt"></i>
+                    </a>
+                {% endif %}
+                {% if project.github_url %}
+                    <a href="{{ project.github_url }}" target="_blank">
+                        Código en GitHub <i class="fab fa-github"></i>
+                    </a>
+                {% endif %}
+                {% if project.report_url %}
+                    <a href="{{ project.report_url }}" target="_blank">
+                        Descargar Informe (PDF) <i class="fas fa-file-pdf"></i>
+                    </a>
+                {% endif %}
+                {% if download_project_file_url %}
+                    <a href="{{ download_project_file_url }}" class="download-button" download="{{ project.original_filename }}">
+                        Descargar Archivo del Proyecto <i class="fas fa-download"></i>
+                    </a>
+                {% endif %}
+
+                {# Botón de Eliminar Proyecto (Solo visible para admins) #}
+                {% if current_user.is_authenticated %}
+                    <form action="{{ url_for('delete_project', id=project.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="delete-button" onclick="return confirm('¿Estás seguro de que quieres eliminar este proyecto? Esta acción es irreversible y borrará también el archivo asociado.');">
+                            Eliminar Proyecto <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                {% endif %}
+            </div>
+        {% else %}
+            <p>Lo sentimos, este proyecto no pudo ser encontrado.</p>
+        {% endif %}
+    </div>
+{% endblock %}

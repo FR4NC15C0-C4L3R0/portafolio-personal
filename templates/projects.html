@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Proyectos - Francisco Calero{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Mis Proyectos</h2>
+
+        {# Esto es solo para depuración, puedes quitarlo si quieres #}
+        {% if current_user.is_authenticated %}
+            <p>Usuario autenticado: {{ current_user.get_id() }}</p>
+            <p>¿Es administrador?: {{ current_user.is_admin }}</p>
+        {% else %}
+            <p>No autenticado.</p>
+        {% endif %}
+        {# Fin del bloque de depuración #}
+
+        {% if projects %}
+            <ul class="project-list"> {# Añadida clase para posible estilo de lista #}
+                {% for project in projects %}
+                    <li class="project-card"> {# Añadida clase para posible estilo de tarjeta #}
+                        {# --- AÑADE ESTE BLOQUE DE CÓDIGO AQUÍ, DENTRO DE <li> Y ANTES DE <h3> --- #}
+                        {% if project.image_filename %}
+                            <img src="{{ url_for('static', filename='uploads/projects/' + project.image_filename) }}" alt="{{ project.name }}" class="project-img">
+                        {% endif %}
+                        {# --------------------------------------------------------------------- #}
+                        <h3>{{ project.name }}</h3>
+                        <p>{{ project.description }}</p> {# Ahora usamos la única 'description' #}
+                        <div class="project-links">
+                            <a href="{{ url_for('show_project_detail', id=project.id) }}" class="button-link">Ver Detalles</a>
+                            {% if project.demo_url %}
+                                <a href="{{ project.demo_url }}" target="_blank" class="button-link demo-button-inline">Demo <i class="fas fa-external-link-alt"></i></a>
+                            {% endif %}
+                            {% if project.github_url %}
+                                <a href="{{ project.github_for_display }}" target="_blank" class="button-link github-button-inline">GitHub <i class="fab fa-github"></i></a>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aún no hay proyectos disponibles en el portafolio. ¡Pronto habrá novedades!</p>
+        {% endif %}
+    </div>
+{% endblock %}

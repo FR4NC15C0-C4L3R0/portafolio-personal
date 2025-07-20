@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi CV - Portafolio de Francisco Calero{% endblock %}
+
+{% block head_extra %}
+    <style>
+        /* Estilos específicos para la página del CV */
+        .cv-container {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .cv-embed {
+            width: 100%;
+            height: 800px; /* Altura para el visor del CV */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .download-button-cv {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .download-button-cv:hover {
+            background-color: #0056b3;
+        }
+        /* Si usas una imagen para el CV, ajusta el tamaño */
+        .cv-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="cv-container">
+        <h2>Mi Currículum Vitae</h2>
+
+        {% if cv_type == 'pdf' %}
+            <p>Puedes ver mi CV interactivo o descargarlo:</p>
+            <embed src="{{ cv_path }}" type="application/pdf" class="cv-embed">
+            <a href="{{ url_for('download_cv') }}" class="download-button-cv">
+                Descargar CV <i class="fas fa-download"></i>
+            </a>
+        {% elif cv_type == 'image' %}
+            <p>Puedes ver mi CV o descargarlo:</p>
+            <img src="{{ cv_path }}" alt="Mi Currículum Vitae" class="cv-image">
+            <a href="{{ url_for('download_cv') }}" class="download-button-cv">
+                Descargar CV <i class="fas fa-download"></i>
+            </a>
+        {% else %}
+            <p>No se pudo cargar el CV. Por favor, contacta al administrador.</p>
+        {% endif %}
+    </div>
+{% endblock %}

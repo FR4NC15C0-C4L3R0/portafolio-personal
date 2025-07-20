@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi CV - Francisco Calero{% endblock %}
+
+{% block content %}
+
+    <div class="cv-content-section">
+
+        <section class="cv-summary">
+            <h2><i class="fas fa-user-alt"></i> Sobre Mí</h2>
+            <p>Soy un profesional resolutivo, organizado y orientado a procesos, con una profunda motivación por el aprendizaje continuo y la mejora constante. Con una sólida formación en Big Data, Inteligencia Artificial y Programación Python. Estoy buscando nuevos desafíos donde aplicar mis habilidades en el desarrollo de soluciones escalables y la transformación de datos complejos en información valiosa. Mi capacidad de trabajo en equipo y adaptación al cambio me permiten integrarme eficazmente en entornos dinámicos.</p>
+        </section>
+
+        <section class="cv-skills">
+            <h2><i class="fas fa-tools"></i> Perfil Técnico</h2>
+            <div class="skills-category">
+                <h3><i class="fas fa-laptop-code"></i>Lenguajes y Frameworks:</h3>
+                <p>Python (Flask, Django, Tkinter)</p>
+            </div>
+            <div class="skills-category">
+                <h3><i class="fas fa-database"></i> Big Data & Machine Learning:</h3>
+                <p>Pandas, NumPy, Scikit-learn, Apache Spark, Hadoop</p>
+            </div>
+            <div class="skills-category">
+                <h3><i class="fas fa-server"></i>Bases de Datos:</h3>
+                <p>MySQL, PostgreSQL, MongoDB, Cassandra</p>
+            </div>
+            <div class="skills-category">
+                <h3><i class="fas fa-cogs"></i>Herramientas:</h3>
+                <p>Git, Docker, VSCode, Jupyter Notebook</p>
+            </div>
+            <div class="skills-category">
+                <h3><i class="fas fa-desktop"></i>Sistemas Operativos:</h3>
+                <p>Windows, Linux (Ubuntu)</p>
+            </div>
+        </section>
+
+        <section class="cv-projects">
+            <h2><i class="fas fa-project-diagram"></i>Proyectos Destacados</h2>
+            <p>Puedes encontrar más detalles y enlaces a mis repositorios en la sección de <a href="{{ url_for('index') }}#projects">Proyectos</a> de este portfolio.</p>
+            
+            <div class="project-entry">
+                <h3>- Sistema de Recomendación (Apache Spark ALS & Docker) -</h3>
+                <p>Diseñé y construí un sistema de recomendación de películas utilizando PySpark y el algoritmo ALS sobre el dataset MovieLens 25M. Superé desafíos de memoria como OutOfMemoryError mediante muestreo de datos y garanticé la consistencia y persistencia del modelo al empaquetar la solución en Docker, demostrando habilidades en procesamiento de Big Data, Machine Learning, contenerización y resolución de problemas.</p>
+                {# Puedes añadir enlaces específicos aquí si lo deseas, o confiar en la sección de proyectos principal #}
+            </div>
+            </section>
+
+        <section class="cv-education">
+            <h2><i class="fas fa-graduation-cap"></i>Formación</h2>
+            
+            <div class="education-entry">
+                <h3>Big Data y Análisis de Datos</h3>
+                <p class="education-dates">Tokio New Technology School • 2024 – 2025</p>
+            </div>
+
+            <div class="education-entry">
+                <h3>Programador Python con especialización en IA</h3>
+                <p class="education-dates">Tokio New Technology School • 2020 – 2023</p>
+            </div>
+
+            <div class="education-entry">
+                <h3>Ciberseguridad en Dispositivos Móviles</h3>
+                <p class="education-dates">Instituto Nacional de Ciberseguridad (INCIBE) • 2011</p>
+            </div>
+
+            <div class="education-entry">
+                <h3>Programador de Aplicaciones en Redes</h3>
+                <p class="education-dates">Academia ALBAY • 2005 – 2006</p>
+            </div>
+
+            <div class="education-entry">
+                <h3>Técnico Administrador de Servidores</h3>
+                <p class="education-dates">Academia EL FUTURO • 2003</p>
+            </div>
+
+            <div class="education-entry">
+                <h3>Técnico en Marketing</h3>
+                <p class="education-dates">C.E.S. Ramon y Cajal • 2001</p>
+            </div>
+
+            <div class="education-entry">
+                <h3>Técnico Especialista Informática de Gestión</h3>
+                <p class="education-dates">C.E.S. Ramon y Cajal • 1999 – 2002</p>
+            </div>
+        </section>
+
+        <section class="cv-experience">
+            <h2><i class="fas fa-briefcase"></i>Experiencia Profesional</h2>
+            
+            <div class="job-entry">
+                <h3>Administrativo | Manipulae, Granada</h3>
+                <p class="job-dates">2021 – Actualidad</p>
+            </div>
+
+            <div class="job-entry">
+                <h3>Cartero | Sociedad Estatal de Correos y Telégrafos, Motril</h3>
+                <p class="job-dates">2018 – 2021</p>
+            </div>
+
+            <div class="job-entry">
+                <h3>Dpto. Certificaciones y Notificaciones | Unipost, Granada</h3>
+                <p class="job-dates">2011 – 2018</p>
+            </div>
+
+            <div class="job-entry">
+                <h3>Jefe de Recambios | Mercedes-Benz, Torrevieja (Alicante)</h3>
+                <p class="job-dates">2007 – 2011</p>
+            </div>
+
+            <div class="job-entry">
+                <h3>Técnico de Redes | Traas, Granada</h3>
+                <p class="job-dates">2002 – 2006</p>
+            </div>
+        </section>
+
+        <div class="cv-contact">
+            <h2><i class="fas fa-id-card"></i>Información Adicional y Contacto</h2>
+            <p><strong>Nivel de inglés:</strong> Básico-técnico.</p>
+            <p><strong>Carnet de conducir:</strong> B1 y vehículo propio.</p>
+            <p><strong>Email:</strong> <a href="mailto:francisco.calero.sanchez@gmail.com">francisco.calero.sanchez@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/francisco-calero/" target="_blank">linkedin.com/in/francisco-calero/</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/FR4NC15C0-C4L3R0" target="_blank">github.com/FR4NC15C0-C4L3R0</a></p>
+        </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 50px;">
+        <a href="{{ url_for('static', filename='docs/Francisco_Calero_CV.pdf') }}" download="Francisco_Calero_CV.pdf" class="download-button-cv">
+            <i class="fas fa-download"></i>Descargar CV en PDF
+        </a>
+    </div>
+
+{% endblock %}

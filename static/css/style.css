@@ -1,0 +1,606 @@
+/* Estilos para la sección de introducción (donde está la foto y el texto "Hola! Soy...") */
+.intro-section {
+    display: flex; /* Convierte este contenedor en un flex container */
+    align-items: center; /* Alinea verticalmente la imagen y el texto en el centro */
+    gap: 40px; /* Espacio entre la imagen y el texto */
+    margin-bottom: 40px; /* Margen inferior para separar de lo que venga después */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a una nueva línea en pantallas pequeñas */
+    justify-content: center; /* Centra los elementos si se envuelven o si hay espacio extra */
+    width: 100%; /* Asegura que la sección de intro ocupe todo el ancho disponible del main */
+    max-width: 100%; /* Asegura que no se desborde */
+}
+
+/* Puedes añadir también un margen para el texto si quieres más separación específica */
+.intro-text {
+    flex: 1; /* Permite que el texto ocupe el espacio restante */
+    min-width: 300px; /* Asegura que el texto no se comprima demasiado en pantallas pequeñas */
+    font-size: 1.1em; /* Ajusta este valor (ej. 1.2em, 1.3em) para el tamaño deseado */
+    line-height: 1.7; /* Mejora la legibilidad con un interlineado mayor */
+    text-align: justify; /* Justifica el texto para una apariencia más limpia */
+}
+
+.intro-text h2 {
+    font-size: 2em; /* Puedes ajustar este tamaño */
+    margin-bottom: 20px;
+    text-align: center; /* Centra el título "¡Hola! Soy Francisco Calero." */
+}
+
+/* Estilos generales del cuerpo de la página */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F8; /* CAMBIO: Fondo gris muy claro / blanco roto */
+    color: #333333; /* CAMBIO: Color de texto base, un gris muy oscuro */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+/* --- HEADER Y NAVEGACIÓN MEJORADOS --- */
+
+/* Estilos para la imagen del logo en el header */
+.header-logo-img {
+    height: 60px; /* Un poco más pequeño para un look más elegante */
+    width: auto;
+    vertical-align: middle;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+/* Estilos para el encabezado (Header) */
+header {
+    background-color: #465A68; /* CAMBIO: Tu nuevo gris azulado oscuro para header */
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.header-content-wrapper {
+    width: 100%;
+    max-width: 1200px; /* Incrementamos ligeramente el ancho máximo del contenido del header */
+    padding: 0 30px; /* Aumentamos el padding horizontal */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Aumentamos el espaciado entre los enlaces */
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.05em;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-family: 'Montserrat', sans-serif; /* ¡CAMBIO AQUÍ! */
+}
+
+/* Efecto de subrayado al pasar el ratón */
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white; /* Color del subrayado */
+    transition: width 0.3s ease;
+}
+
+header nav a:hover::after,
+header nav a.active::after { /* Clase 'active' para la página actual */
+    width: 100%;
+}
+
+header nav a:hover {
+    color: #E0E0E0; /* Gris muy claro al pasar el ratón */
+    transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+}
+
+/* Estilo para los botones de acción (Login/Logout) */
+header nav a.button-style {
+    background-color: rgba(255, 255, 255, 0.15); /* Fondo semitransparente sobre el color del header */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde sutil */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+header nav a.button-style:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: white;
+    color: white;
+    transform: none; /* Quitamos la elevación si ya tiene fondo */
+}
+
+/* Media Queries para Responsive (Menú Hamburguesa) */
+@media (max-width: 768px) {
+    .header-content-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 20px;
+    }
+
+    header nav {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        display: none;
+        padding: 20px 0;
+        background-color: #465A68; /* CAMBIO: Nuevo color de header para el menú desplegado */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header nav.is-open {
+        display: flex;
+    }
+
+    header nav a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header nav a:last-child {
+        border-bottom: none;
+    }
+
+    .logo-container {
+        margin-right: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* --- ESTILOS PARA EL CONTENIDO PRINCIPAL (MAIN) - AHORA LA CAJA BLANCA GRANDE Y CENTRADA --- */
+main {
+    max-width: 1000px; /* ¡Ahora el main será consistentemente de 1200px! */
+    margin: 20px auto; /* Centra el main horizontalmente en la página */
+    padding: 20px; /* Relleno interno para que el contenido no toque los bordes del main */
+    background-color: #FFFFFF; /* Fondo blanco puro para el main */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para el marco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-sizing: border-box; /* Crucial para que padding no añada ancho extra */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Esto centrará horizontalmente los elementos directamente dentro de <main> */
+    width: 100%; /* Asegura que main ocupe el 100% del ancho si es menor a max-width */
+    flex-grow: 1;
+    /*justify-content: center; /* Esto centrará verticalmente el contenido dentro de main */*/
+    min-height: calc(100vh - 120px - 100px); /* Ajusta si 120px/100px no son los altos de header/footer */
+}
+
+/* Estilos para la sección de "Sobre Mí" (si aplica) */
+.about-me {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 5px solid #465A68; /* CAMBIO: Borde de la foto de perfil con el color del header */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para las tarjetas de proyectos */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%; /* Ocupa todo el ancho de su contenedor (main) */
+    max-width: 960px; /* Mantenemos este max-width para la cuadrícula si la quieres más estrecha que el main */
+    margin: 0 auto 40px auto; /* Centra la cuadrícula dentro del main */
+}
+
+.project-card {
+    background-color: #FFFFFF; /* CAMBIO: Fondo blanco puro para tarjetas de proyecto */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h3 {
+    color: #333333; /* CAMBIO: Color de título de tarjeta de proyecto (gris oscuro) */
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.project-card p {
+    color: #555555; /* Mantenemos este gris para el texto de la descripción */
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-links a {
+    display: inline-block;
+    background-color: #5D8AA8; /* CAMBIO: Color de acento para botones de proyectos */
+    color: white;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.project-links a:hover {
+    background-color: #46718E; /* CAMBIO: Hover para color de acento */
+}
+
+/* Estilos para el pie de página (Footer) */
+footer {
+    background-color: #465A68; /* CAMBIO: Tu nuevo gris azulado oscuro para footer */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
+/* --- ESTILOS PARA LOS RECUADROS GRISES DE LOGIN Y SUBIDA (FORMULARIOS) --- */
+
+/* Estilos para el recuadro gris del formulario de Login */
+.login-container {
+    max-width: 450px; /* El ancho deseado para el formulario */
+    margin: 0 auto; /* Centra el formulario DENTRO del main */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible si es menor a max-width */
+    padding: 30px; /* Relleno interno para que el contenido no toque los bordes del formulario */
+    background-color: #f9f9f9; /* Un color de fondo ligeramente diferente si quieres que se vea como una caja separada dentro del blanco grande */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra ligera para el formulario */
+    text-align: center; /* Centra el texto y los elementos internos si son inline-block */
+    box-sizing: border-box;
+}
+
+/* Estilos para el recuadro gris del formulario de Cargar Proyecto */
+.upload-form-container {
+    max-width: 800px; /* Si quieres que sea más estrecho que el main */
+    width: 100%;
+    margin: 0 auto; /* Centra el formulario dentro del main */
+    padding: 30px;
+    background-color: #FFFFFF; /* CAMBIO: Fondo blanco puro para upload */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Estilos para títulos de formularios */
+.login-container h2 {
+    margin-bottom: 25px;
+    color: #333333; /* CAMBIO: Color de título de formulario (gris oscuro) */
+    text-align: center;
+}
+
+.upload-form-container h2 {
+    margin-bottom: 25px;
+    color: #333333; /* CAMBIO: Color de título de formulario (gris oscuro) */
+    text-align: center;
+}
+
+.login-form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Alinea etiquetas y campos a la izquierda dentro del grupo */
+}
+.form-group {      /* Clases específicas de upload */
+    margin-bottom: 15px;
+    text-align: left;
+    
+}
+
+.login-form-group label{
+    display: block; /* Asegura que la etiqueta esté en su propia línea */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555555; /* Mantenemos este gris para las etiquetas */
+}
+
+/* Estilos para inputs de texto, textarea y file en formularios */
+.form-group input[type="text"],
+.form-group textarea,
+.form-group input[type="file"],
+.form-group input[type="url"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #DDDDDD; /* Borde de input */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Aplica también a los inputs del login para consistencia */
+.login-form-group input[type="text"],
+.login-form-group input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #DDDDDD; /* Borde de input */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group input[type="file"] {
+    padding: 8px;
+    border: none;
+}
+
+/* Estilos para los botones de formularios */
+.login-form-group button,
+.form-group button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #5D8AA8; /* CAMBIO: Color de acento para botones de formulario */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.login-form-group button:hover,
+.form-group button:hover {
+    background-color: #46718E; /* CAMBIO: Hover para color de acento */
+}
+
+/* Estilos para mensajes flash de Flask */
+.flash-message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Eliminar los puntos de la lista de proyectos en la página de "Mis Proyectos" */
+.project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Opcional: Para darle la apariencia de "tarjeta" a cada proyecto como en tu imagen */
+.project-card {
+    background-color: #FFFFFF; /* CAMBIO: Fondo blanco puro para tarjetas de proyecto */
+    border: 1px solid #EEEEEE; /* CAMBIO: Borde muy sutil para tarjetas */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* --- Estilos para la Página del CV --- */
+
+/* Contenedor principal del contenido del CV */
+.cv-content-section {
+    padding: 30px;
+    line-height: 1.6;
+    color: #333333; /* Color de texto general del CV */
+    width: 100%; /* Asegura que ocupe todo el ancho de main */
+    max-width: 100%; /* Asegura que no se desborde */
+}
+
+/* Estilo para los títulos de sección (h2) */
+.cv-content-section h2 {
+    color: #5D8AA8; /* CAMBIO: Color de acento para títulos de sección del CV */
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    margin-top: 40px;
+    border-bottom: 3px solid #5D8AA8; /* CAMBIO: Borde con color de acento */
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Estilo general para las secciones (tarjetas) */
+.cv-content-section section {
+    background-color: #FFFFFF; /* CAMBIO: Fondo blanco puro para secciones del CV */
+    border: 1px solid #EEEEEE; /* CAMBIO: Borde muy sutil para secciones */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+/* Estilo para los párrafos dentro del CV (por ejemplo, en "Sobre Mí") */
+.cv-content-section p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+/* --- Estilos para la sección de PERFIL TÉCNICO (Habilidades) --- */
+
+.cv-skills .skills-category {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #DDDDDD; /* Borde sutil para categorías */
+}
+
+.cv-skills .skills-category:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.cv-skills .skills-category h3 {
+    color: #5D8AA8; /* CAMBIO: Color de acento para títulos de categoría de habilidades */
+    font-size: 1.3em;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.cv-skills .skills-category p {
+    font-size: 1.05em;
+    color: #555555; /* Mantenemos este gris para el texto de habilidades */
+    margin-bottom: 0;
+}
+
+/* --- Estilos para EXPERIENCIA y FORMACIÓN --- */
+
+.job-entry, .education-entry {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #EEEEEE; /* Borde muy sutil para entradas */
+}
+
+.job-entry:last-child, .education-entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.job-entry h3, .education-entry h3 {
+    color: #333333; /* CAMBIO: Color de título de experiencia/formación (gris oscuro) */
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+.job-dates, .education-dates {
+    font-style: italic;
+    color: #666666; /* Mantenemos este gris para las fechas */
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* --- Estilos para el botón de Descargar CV --- */
+.download-button-cv {
+    display: inline-block;
+    background-color: #5D8AA8; /* CAMBIO: Color de acento para el botón de descarga CV */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.download-button-cv:hover {
+    background-color: #46718E; /* CAMBIO: Hover para el botón de descarga CV */
+    transform: translateY(-2px);
+}
+
+/* --- Estilos para las miniaturas de proyectos --- */
+.project-img {
+    max-width: 100%; /* Asegura que la imagen no se desborde de su contenedor */
+    height: auto;    /* Mantiene la proporción de la imagen */
+    display: block;  /* Elimina espacio extra debajo de la imagen */
+    margin-bottom: 10px; /* Espacio entre la imagen y el título del proyecto */
+    border-radius: 5px; /* Bordes ligeramente redondeados (opcional) */
+    /* Puedes añadir un tamaño fijo si quieres que todas tengan la misma altura, por ejemplo: */
+    /* max-height: 200px; */ /* Limita la altura máxima de la miniatura */
+    /* object-fit: cover; */ /* Asegura que la imagen cubra el espacio sin distorsionarse si usas max-height */
+}
+
+/* Si tienes estilos para .project-card, puedes ajustar cómo la imagen encaja */
+.project-card {
+    /* ... otros estilos de tu tarjeta ... */
+    display: flex; /* O grid, si lo prefieres para la organización interna */
+    flex-direction: column; /* Organiza la imagen, título, etc. en columna */
+    align-items: center; /* Centra el contenido horizontalmente en la tarjeta */
+    text-align: center; /* Centra el texto */
+    /* Puedes querer darle un ancho fijo a la tarjeta para que las miniaturas se vean uniformes */
+    /* width: 300px; */  
+}
+
+/* Las siguientes reglas han sido ELIMINADAS/CONSOLIDADAS en el selector 'main' */
+/* .container { } */
+/* .main-content-section { } */
+/* .container.main-content-section { } */
+
+
+/* Esto es para los inputs de los formularios de login y upload. */
+/* Es importante que no tengan un width que sume al padding, por eso el calc(100% - 22px) o similar. */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: calc(100% - 22px); /* Ancho del 100% menos el padding y el borde */
+    padding: 10px;
+    margin-bottom: 15px; /* Espacio debajo de cada campo */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container button[type="submit"] {
+    width: 100%; /* El botón ocupa todo el ancho del formulario */
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}justify-content: center; /* Esto centrará verticalmente el contenido dentro de main */

@@ -1,0 +1,72 @@
+[
+    {
+        "id": "110cd29c-948a-4204-9209-ac4a07b45b37",
+        "name": "Sistema de Recomendaci\u00f3n de Pel\u00edculas (Apache Spark ALS & Docker)",
+        "description_short": "Desarrollo de Sistema de Recomendaci\u00f3n (Apache Spark ALS & Docker): \r\nDise\u00f1\u00e9 y constru\u00ed un sistema de recomendaci\u00f3n de pel\u00edculas utilizando PySpark y el algoritmo ALS sobre el dataset MovieLens 25M. Super\u00e9 desaf\u00edos de memoria como OutOfMemoryError mediante muestreo de datos y garantice la consistencia y persistencia del modelo al empaquetar la soluci\u00f3n en Docker, demostrando habilidades en procesamiento de Big Data, Machine Learning, contenerizaci\u00f3n y resoluci\u00f3n de problemas.",
+        "description_full": "Proyecto: Sistema de Recomendaci\u00f3n de Pel\u00edculas (Apache Spark ALS & Docker)\r\nEste proyecto abarca el dise\u00f1o y la implementaci\u00f3n de un sistema de recomendaci\u00f3n de pel\u00edculas robusto y escalable, utilizando tecnolog\u00edas de Big Data y Machine Learning. El objetivo principal fue construir un modelo capaz de sugerir pel\u00edculas personalizadas a los usuarios bas\u00e1ndose en sus preferencias y comportamientos pasados.\r\nTecnolog\u00edas Clave Utilizadas:\r\n\u2022\tApache Spark (PySpark): Empleado como motor de procesamiento distribuido para manejar eficientemente el gran volumen de datos del dataset.\r\n\u2022\tAlgoritmo ALS (Alternating Least Squares): Implementado a trav\u00e9s de la librer\u00eda Spark MLlib para la factorizaci\u00f3n matricial, ideal para sistemas de recomendaci\u00f3n con datos dispersos (muchos usuarios que han valorado pocas pel\u00edculas).\r\n\u2022\tDocker: Utilizado para empaquetar la aplicaci\u00f3n completa, incluyendo todas sus dependencias, asegurando un entorno de ejecuci\u00f3n consistente y portable.\r\nDetalles y Desaf\u00edos Superados:\r\n1.\tProcesamiento de Big Data con Spark:\r\no\tTrabaj\u00e9 con el extenso dataset MovieLens 25M, que contiene 25 millones de calificaciones de 62.000 pel\u00edculas por 162.000 usuarios.\r\no\tUtilic\u00e9 PySpark para la ingesta, limpieza y preparaci\u00f3n de estos datos a gran escala, transform\u00e1ndolos en el formato adecuado para el algoritmo ALS.\r\n2.\tModelado de Machine Learning (ALS):\r\no\tSe aplic\u00f3 el algoritmo ALS, un m\u00e9todo de factorizaci\u00f3n matricial ampliamente utilizado en sistemas de recomendaci\u00f3n colaborativos. Este algoritmo aprende patrones latentes en las interacciones usuario-\u00edtem para predecir calificaciones no observadas y generar recomendaciones personalizadas.\r\no\tAjust\u00e9 y valid\u00e9 los par\u00e1metros del modelo (ej., rango, regularizaci\u00f3n, iteraciones) para optimizar la precisi\u00f3n de las recomendaciones.\r\n3.\tGesti\u00f3n de Memoria y Rendimiento:\r\no\tDurante el desarrollo, me enfrent\u00e9 al desaf\u00edo cr\u00edtico de los errores de memoria (OutOfMemoryError), comunes al trabajar con datasets tan grandes en entornos Spark.\r\no\tResolv\u00ed estos problemas mediante la implementaci\u00f3n de estrategias de muestreo de datos inteligentemente dise\u00f1adas que permitieron entrenar y evaluar el modelo de manera efectiva sin agotar los recursos del sistema, manteniendo la representatividad del dataset original.\r\n4.\tContenerizaci\u00f3n y Despliegue con Docker:\r\no\tPara garantizar la consistencia, portabilidad y reproducibilidad del entorno de ejecuci\u00f3n, empaquet\u00e9 toda la soluci\u00f3n (c\u00f3digo PySpark, dependencias de Python, configuraci\u00f3n de Spark) en un contenedor Docker.\r\no\tEsto permite que cualquier persona pueda ejecutar el sistema de recomendaci\u00f3n en cualquier m\u00e1quina con Docker instalado, eliminando problemas de configuraci\u00f3n de dependencias y asegurando que el modelo funcione como se espera en cualquier entorno.\r\no\tLa soluci\u00f3n Docker incluye un script para el entrenamiento del modelo y la generaci\u00f3n de recomendaciones, facilitando la orquestaci\u00f3n y el despliegue.\r\nResultados y Aprendizajes:\r\nEl proyecto culmin\u00f3 con un sistema de recomendaci\u00f3n funcional capaz de generar sugerencias de pel\u00edculas personalizadas. La experiencia en este proyecto consolid\u00f3 mis habilidades en:\r\n\u2022\tProcesamiento distribuido de Big Data con Apache Spark.\r\n\u2022\tImplementaci\u00f3n y optimizaci\u00f3n de algoritmos de Machine Learning para sistemas de recomendaci\u00f3n.\r\n\u2022\tResoluci\u00f3n de problemas complejos relacionados con la gesti\u00f3n de recursos (memoria) en entornos de Big Data.\r\n\u2022\tContenerizaci\u00f3n y MLOps b\u00e1sicos con Docker, asegurando el despliegue y la reproducibilidad de modelos de IA.\r\n",
+        "filename_on_server": "110cd29c-948a-4204-9209-ac4a07b45b37.py",
+        "original_filename": "main.py",
+        "demo_url": null,
+        "github_url": "https://github.com/Fr4nc15c0-C4l3r0/movie-recommender-spark-als",
+        "report_url": null,
+        "github_for_display": "github.com/Fr4nc15c0-C4l3r0/movie-recommender-spark-als"
+    },
+    {
+        "id": "aae2f587-06e3-4606-8a3a-fdaaf059b86b",
+        "name": "hola 2",
+        "description": "dsfnsd\u00f1ofn\u00f1sdofng\u00f1osdanfg\u00f1osdnf\u00f1lsd",
+        "filename_on_server": "aae2f587-06e3-4606-8a3a-fdaaf059b86b.py",
+        "original_filename": "main.py",
+        "demo_url": "sadfasdf",
+        "github_url": "sadfsadfsadf",
+        "report_url": "sdafsadfasdf",
+        "github_for_display": "sadfsadfsadf"
+    },
+    {
+        "id": "816ff218-764a-44f2-ab89-b36554043fb5",
+        "name": "sadfasdfsadfsdaf",
+        "description": "sdfasdfasdfasdfasdf",
+        "filename_on_server": "816ff218-764a-44f2-ab89-b36554043fb5.rar",
+        "original_filename": "logo_transparente-02.rar",
+        "demo_url": null,
+        "github_url": null,
+        "report_url": null,
+        "image_filename": "816ff218-764a-44f2-ab89-b36554043fb5_img.gif",
+        "github_for_display": null
+    },
+    {
+        "id": "bf43b1c7-2977-4e87-9659-e90ff1c3eee5",
+        "name": "prueba de imagen",
+        "description": "dsfsdvn\u00f1osdafg\u00f1oasdhfg\u00f1oaijhfg\u00f1o\u00edewrajhlkasdsdajdnfnh dfpasdifas",
+        "filename_on_server": "bf43b1c7-2977-4e87-9659-e90ff1c3eee5.rar",
+        "original_filename": "logo_transparente-02.rar",
+        "demo_url": "xbnvbcvbn",
+        "github_url": "vbnvbnvbnvbn",
+        "report_url": "xcvxcvxcvxc",
+        "image_filename": "bf43b1c7-2977-4e87-9659-e90ff1c3eee5_img.jpg",
+        "github_for_display": "vbnvbnvbnvbn"
+    },
+    {
+        "id": "70b87922-e612-4cc7-9ba5-d93f3e92f5c2",
+        "name": "prueba 0001",
+        "description": "esta es otra prueba para subir proyectos",
+        "filename_on_server": "70b87922-e612-4cc7-9ba5-d93f3e92f5c2.rar",
+        "original_filename": "imagen_proyecto.rar",
+        "demo_url": "no se si sale bien",
+        "github_url": "asdisda",
+        "report_url": "dosdjkf",
+        "image_filename": "70b87922-e612-4cc7-9ba5-d93f3e92f5c2_img.jpg",
+        "github_for_display": "asdisda"
+    },
+    {
+        "id": "9570544e-75d3-4031-a0cb-efb1893e5db1",
+        "name": "prueba 00002",
+        "description": "erpertptr\u00ba",
+        "filename_on_server": "9570544e-75d3-4031-a0cb-efb1893e5db1.rar",
+        "original_filename": "imagen_proyecto.rar",
+        "demo_url": "lkuibhn",
+        "github_url": "oloih",
+        "report_url": "ihoiioh",
+        "image_filename": "9570544e-75d3-4031-a0cb-efb1893e5db1_img.png"
+    }
+]
