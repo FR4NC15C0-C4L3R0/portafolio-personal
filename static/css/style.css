@@ -49,7 +49,7 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
-    margin-right: 30px;
+    /* margin-right: 30px; */ /* Eliminamos esto para mejor control con flexbox en el wrapper */
 }
 
 /* Estilos para el encabezado (Header) */
@@ -61,34 +61,48 @@ header {
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    position: relative;
+    position: relative; /* Importante para el posicionamiento absoluto del menú desplegable */
     z-index: 1000;
 }
 
-header .logo {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-
+/* Contenedor principal dentro del header para alinear logo y nav */
 .header-content-wrapper {
     width: 100%;
     max-width: 1200px; /* Incrementamos ligeramente el ancho máximo del contenido del header */
     padding: 0 30px; /* Aumentamos el padding horizontal */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Empuja el logo a un lado y la nav al otro */
     align-items: center;
     box-sizing: border-box;
 }
 
-header nav {
-    display: flex;
-    align-items: center;
-    gap: 30px; /* Aumentamos el espaciado entre los enlaces */
+/* Estilos para el botón de hamburguesa (visible solo en móvil por defecto) */
+.nav-toggle {
+    display: none; /* Por defecto oculto en escritorio */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em; /* Tamaño del icono */
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100; /* Asegura que esté por encima de otros elementos */
 }
 
-header nav a {
+/* Estilos para la navegación principal (enlaces) */
+#main-nav {
+    display: flex; /* Utiliza flexbox para la nav */
+    align-items: center;
+}
+
+#main-nav .nav-links {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Para que los elementos li estén en línea */
+    gap: 30px; /* Espaciado entre los elementos de navegación */
+}
+
+#main-nav .nav-links li a {
     color: white;
     text-decoration: none;
     font-size: 1.05em;
@@ -96,33 +110,33 @@ header nav a {
     padding: 8px 0;
     position: relative;
     transition: color 0.3s ease, transform 0.2s ease;
-    font-family: 'Montserrat', sans-serif; /* ¡CAMBIO AQUÍ! */
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Efecto de subrayado al pasar el ratón */
-header nav a::after {
+#main-nav .nav-links li a::after {
     content: '';
     position: absolute;
     width: 0%;
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: white; /* Color del subrayado */
+    background-color: white;
     transition: width 0.3s ease;
 }
 
-header nav a:hover::after,
-header nav a.active::after { /* Clase 'active' para la página actual */
+#main-nav .nav-links li a:hover::after,
+#main-nav .nav-links li a.active::after {
     width: 100%;
 }
 
-header nav a:hover {
-    color: #E0E0E0; /* Gris muy claro al pasar el ratón */
-    transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+#main-nav .nav-links li a:hover {
+    color: #E0E0E0;
+    transform: translateY(-2px);
 }
 
 /* Estilo para los botones de acción (Login/Logout) */
-header nav a.button-style {
+#main-nav .nav-links li a.button-style {
     background-color: rgba(255, 255, 255, 0.15); /* Fondo semitransparente sobre el color del header */
     border: 1px solid rgba(255, 255, 255, 0.4); /* Borde sutil */
     padding: 8px 15px;
@@ -131,7 +145,7 @@ header nav a.button-style {
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-header nav a.button-style:hover {
+#main-nav .nav-links li a.button-style:hover {
     background-color: rgba(255, 255, 255, 0.25);
     border-color: white;
     color: white;
@@ -141,45 +155,68 @@ header nav a.button-style:hover {
 /* Media Queries para Responsive (Menú Hamburguesa) */
 @media (max-width: 768px) {
     .header-content-wrapper {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: nowrap; /* Evita que el logo y el toggle se envuelvan */
+        justify-content: space-between; /* Empuja logo a un lado, toggle al otro */
         padding: 0 20px;
     }
 
-    header nav {
-        flex-direction: column;
+    .logo-container {
+        margin-right: 0; /* No necesitamos margen extra aquí */
+        width: auto; /* Permite que ocupe solo el espacio necesario */
+    }
+
+    /* Mostrar el botón de hamburguesa en móvil */
+    .nav-toggle {
+        display: block; /* Ahora es visible */
+    }
+
+    /* Ocultar los enlaces del menú por defecto en móvil */
+    #main-nav .nav-links {
+        display: none; /* Oculta la lista de enlaces por defecto */
+        flex-direction: column; /* Apila los enlaces verticalmente */
         width: 100%;
-        gap: 15px;
-        display: none;
-        padding: 20px 0;
-        background-color: #465A68; /* CAMBIO: Nuevo color de header para el menú desplegado */
-        position: absolute;
-        top: 100%;
+        gap: 0; /* Elimina el espaciado entre elementos en modo columna */
+        background-color: #465A68; /* Fondo para el menú desplegado */
+        position: absolute; /* Posiciona el menú debajo del header */
+        top: 100%; /* Justo debajo del header */
         left: 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px 0; /* Relleno superior e inferior para los enlaces */
     }
 
-    header nav.is-open {
-        display: flex;
+    /* Cuando la clase 'nav-open' esté activa en el <nav> */
+    #main-nav.nav-open .nav-links {
+        display: flex; /* Muestra los enlaces cuando el menú está abierto */
     }
 
-    header nav a {
-        padding: 10px 20px;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    #main-nav .nav-links li {
+        width: 100%; /* Hace que cada elemento de la lista ocupe todo el ancho */
+        text-align: center; /* Centra el texto de cada enlace */
     }
 
-    header nav a:last-child {
-        border-bottom: none;
+    #main-nav .nav-links li a {
+        padding: 12px 20px; /* Aumenta el área de clic y el espaciado para móviles */
+        width: 100%; /* Asegura que el área de clic ocupe todo el li */
+        display: block; /* Para que el padding y width funcionen correctamente */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador entre enlaces */
     }
 
-    .logo-container {
-        margin-right: 0;
-        width: 100%;
-        justify-content: space-between;
+    #main-nav .nav-links li:last-child a {
+        border-bottom: none; /* Elimina el borde del último elemento */
+    }
+
+    /* Ajustar los efectos hover para móvil si es necesario */
+    #main-nav .nav-links li a:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al hacer hover en móvil */
+        transform: none; /* Desactiva la elevación en móvil si no la quieres */
+    }
+
+    #main-nav .nav-links li a.button-style {
+        background-color: rgba(255, 255, 255, 0.25); /* Un poco más fuerte para el botón */
+        border: 1px solid rgba(255, 255, 255, 0.6);
     }
 }
+
 
 /* --- ESTILOS PARA EL CONTENIDO PRINCIPAL (MAIN) - AHORA LA CAJA BLANCA GRANDE Y CENTRADA --- */
 main {
@@ -326,7 +363,7 @@ footer {
     margin-bottom: 15px;
     text-align: left; /* Alinea etiquetas y campos a la izquierda dentro del grupo */
 }
-.form-group {      /* Clases específicas de upload */
+.form-group {     /* Clases específicas de upload */
     margin-bottom: 15px;
     text-align: left;
     
@@ -603,4 +640,4 @@ footer {
 
 .login-container button[type="submit"]:hover {
     background-color: #0056b3;
-}justify-content: center; /* Esto centrará verticalmente el contenido dentro de main */
+}
